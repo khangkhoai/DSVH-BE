@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\LoaiDiSan\LoaiDiSanRepositoryInterface;
+use App\Models\DiSan;
 
 class LoaiDiSanController extends Controller
 {
@@ -98,5 +99,9 @@ class LoaiDiSanController extends Controller
     {
         $this->loaidisanRepo->delete($id);
         return response()->json(null, 201);
+    }
+    public function getDetails($id){
+        return DiSan::where('loai_id', $id)->get();
+       
     }
 }

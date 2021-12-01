@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    protected $guard_name = 'api';
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -17,6 +18,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    use Notifiable, HasApiTokens;
     protected $fillable = [
         'name',
         'email',

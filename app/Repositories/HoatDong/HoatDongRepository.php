@@ -12,4 +12,6 @@ class HoatDongRepository extends BaseRepository implements HoatDongRepositoryInt
     }
     
 
+    
+
 }

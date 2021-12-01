@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HoatDong;
 use Illuminate\Http\Request;
 use App\Repositories\HoatDong\HoatDongRepositoryInterface;
 class HoatDongController extends Controller
@@ -22,8 +23,9 @@ class HoatDongController extends Controller
      */
     public function index()
     {
-        $hoatdong = $this->hoatdongRepo->getAll();
-        return response()->json($hoatdong, 201);
+        // $hoatdong = $this->hoatdongRepo->getAll();
+        // return response()->json($hoatdong, 201);
+        return HoatDong::orderBy('created_at' , 'desc' )->limit(3)->get();
     }
 
     /**
@@ -33,7 +35,7 @@ class HoatDongController extends Controller
      */
     public function create()
     {
-        //
+        return HoatDong::orderBy('created_at' , 'desc' )->limit(3)->get();
     }
 
     /**
@@ -96,5 +98,12 @@ class HoatDongController extends Controller
     {
         $this->hoatdongRepo->delete($id);
         return response()->json(null, 201);
+    }
+    public function index2(){
+        
+      
+        // $hoatdong = $this->hoatdongRepo->getAll();
+        // return response()->json($hoatdong, 201);
+       
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\CapDiSan\CapDiSanRepositoryInterface;
 use App\Models\CapDiSan;
+use App\Models\DiSan;
+
 class CapDiSanController extends Controller
 {
      /**
@@ -98,8 +100,8 @@ class CapDiSanController extends Controller
         $this->capdisanRepo->delete($id);
         return response()->json(null, 201);
     }
-    // public function getDetails($id){
-    //     return Product::where('category_id', $id)->get();
+    public function getDetails($id){
+        return DiSan::where('cap_id', $id)->get();
        
-    // }
+    }
 }

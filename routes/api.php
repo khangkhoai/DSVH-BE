@@ -9,6 +9,8 @@ use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DiaChiController;
 use App\Http\Controllers\HoatDongController;
 use App\Http\Controllers\AuthController;
+use App\Models\HoatDong;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,8 +31,11 @@ Route::resource('disan',DiSanController::class);
 Route::post('disan/{disan}',[DiSanController::class,'updateDiSan']);
 Route::get('disan/search/{name}',[DiSanController::class,'search']);
 Route::resource('loaidisan',LoaiDiSanController::class);
+Route::get('loaidisan/get/{id}',[LoaiDiSanController::class,'getDetails']);
 Route::resource('capdisan',CapDiSanController::class);
+Route::get('capdisan/get/{id}',[CapDiSanController::class,'getDetails']);
 Route::resource('hoatdong',HoatDongController::class);
+Route::get('hoatdong/lastest/',[HoatDongController::class,'index2']);
 Route::resource('danhgia',DanhGiaController::class);
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
