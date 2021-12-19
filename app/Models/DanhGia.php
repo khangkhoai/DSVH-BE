@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DanhGia extends Model
 {
     use HasFactory;
-    protected $fillable = ['disan_id', 'danhgia', 'binhluan'];
+    protected $fillable = ['disan_id', 'ten' ,'danhgia', 'binhluan'];
 
     public function disan(){
         return $this->belongsTo(DiSan::class,'disan_id');

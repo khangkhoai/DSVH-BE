@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DanhGia;
 use Illuminate\Http\Request;
 use App\Repositories\DanhGia\DanhGiaRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class DanhGiaController extends Controller
 {
@@ -97,5 +99,13 @@ class DanhGiaController extends Controller
     {
         $this->danhgiaRepo->delete($id);
         return response()->json(null, 201);
+    }
+    public function vote($id)
+    {
+         return DB::table('danh_gias')->join('di_sans', 'disan_id', '=', 'di_sans.id')->where('danh_gias.disan_id', '=',  $id )->select('danh_gias.ten', 'danhgia', 'binhluan', 'danh_gias.created_at')->get();
+    }
+    public function stat()
+    {
+        return DB::table('danh_gias')->join('di_sans', 'disan_id', '=', 'di_sans.id')->groupBy('di_sans.ten','luotxem')->select( 'di_sans.ten','luotxem')->selectRaw('avg(danhgia) as trungbinh')->get();
     }
 }

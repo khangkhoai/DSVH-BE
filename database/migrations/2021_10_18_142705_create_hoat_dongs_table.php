@@ -17,8 +17,10 @@ class CreateHoatDongsTable extends Migration
             $table->id();
             $table->integer('disan_id');
             $table->string('ten');
+            $table->longText('mota');
             $table->date('batdau');
             $table->date('ketthuc');
+            $table->string('anh');
             $table->string('diadiem');
             $table->timestamps();
         });

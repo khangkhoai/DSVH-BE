@@ -15,6 +15,7 @@ class CreateDanhGiasTable extends Migration
     {
         Schema::create('danh_gias', function (Blueprint $table) {
             $table->id();
+            $table->string('ten');
             $table->integer('disan_id');
             $table->integer('danhgia');
             $table->string('binhluan');
